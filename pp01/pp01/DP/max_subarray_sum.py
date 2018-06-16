@@ -46,25 +46,26 @@ def max_subarray(A):
 #     return maxSubarray
 
 if __name__ == "__main__":
-    t = int(raw_input().strip())
-    for a0 in xrange(t):
-        n = int(raw_input().strip())
-        arr = map(int, raw_input().strip().split(' '))
-        subsequence_sum = 0
-        subsequence_item = 0
-        for i in range(n):
-            if arr[i] >= 0:
-                subsequence_sum += arr[i]
-                subsequence_item += 1
-        if not subsequence_item:
-            max_elem = arr[0]
-            for x in arr:
-                if x >= max_elem:
-                    max_elem = x
-                    subsequence_item = 1
-            subsequence_sum = max_elem
-        # dpresult= maxSubarrayDP()
-        # result = dpresult(arr)
+    t = int(input().strip())
+    for a0 in range(t):
+        n = int(input().strip())
+        arr = [int(x) for x in input().strip().split(' ')]
+        # subsequence_sum = 0
+        # subsequence_item = 0
+        # for i in range(n):
+        #     if arr[i] >= 0:
+        #         subsequence_sum += arr[i]
+        #         subsequence_item += 1
+        # if not subsequence_item:
+        #     max_elem = arr[0]
+        #     for x in arr:
+        #         if x >= max_elem:
+        #             max_elem = x
+        #             subsequence_item = 1
+        #     subsequence_sum = max_elem
+        # # dpresult= maxSubarrayDP()
+        # # result = dpresult(arr)
         result = max_subarray(arr)
-        # print result
-        print " ".join(map(str, (result, subsequence_sum)))
+        print(result)
+        # print(" ".join(map(str, (result, subsequence_sum))))
+# A= [-2,-3, 4, -1, -2, 1, 5, -3]
