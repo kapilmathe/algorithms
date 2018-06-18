@@ -3,11 +3,19 @@
 import sys
 
 def max_subarray(A):
+    start = None
+    end = None
     max_ending_here = max_so_far = A[0]
-    for x in A[1:]:
-        max_ending_here = max(x, max_ending_here + x)
+    for x in range(1, len(A)):
+        max_ending_here += A[x]
+        if max_ending_here < 0:
+            max_ending_here = 0
+            start = x+1
+        if max_so_far < max_ending_here:
+            max_so_far = max_ending_here
+            end = x
         max_so_far = max(max_so_far, max_ending_here)
-    return max_so_far
+    return start, end, max_so_far
 
 # def maxSubarrayDP():
 #     dp = {}
@@ -49,7 +57,7 @@ if __name__ == "__main__":
     t = int(input().strip())
     for a0 in range(t):
         n = int(input().strip())
-        arr = [int(x) for x in input().strip().split(' ')]
+        arr = A= [-2,-3, 4, -1, -2, 1, 5, -3] # [int(x) for x in input().strip().split(' ')]
         # subsequence_sum = 0
         # subsequence_item = 0
         # for i in range(n):

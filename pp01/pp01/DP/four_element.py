@@ -5,7 +5,7 @@ def four_elem(A, n, k, X, result = None):
     if result is None:
         result = []
     if X == 0 and k == 0:
-        return []
+        return result
     if n < k:
         return None
     if n == k:
@@ -30,6 +30,6 @@ def four_elem(A, n, k, X, result = None):
 A = [1,3,23,2,4,6]
 n = len(A)
 k = 4
-X= 10
+X= 15
 r = four_elem(A,n,k,X)
 print(r)
