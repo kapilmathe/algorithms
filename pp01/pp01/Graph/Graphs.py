@@ -2,7 +2,20 @@
 A simple Python graph class, demonstrating the essential
 facts and functionalities of graphs.
 """
+class Vertex(object):
+    def __init__(self, label=''):
+        self.label = label
+    def __repr__(self):
+        return 'Vertex(%s)' % repr(self.label)
+    __str__ = __repr__
 
+
+class Edge(tuple):
+    def __new__(cls, e1, e2):
+        return tuple.__new__(cls, (e1, e2))
+    def __repr__(self):
+        return 'Edge(%s, %s)' % (repr(self[0]), repr(self[1]))
+    __str__ = __repr__
 
 class Graph(object):
 

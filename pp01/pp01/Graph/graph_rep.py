@@ -36,20 +36,20 @@ class Graph(dict):
 v = Vertex('v')
 w = Vertex('w')
 e = Edge(v, w)
-print e
+print(e)
 g = Graph([v, w], [e])
-print g
+print(g)
 
 import string
 
 def alphabet_cycle():
     while True:
-        for c in string.lowercase:
+        for c in string.ascii_lowercase:
             yield c
 
 cnt = 0
 for i in alphabet_cycle():
     cnt += 1
-    print i
+    print(i)
     if cnt > 51:
         break
