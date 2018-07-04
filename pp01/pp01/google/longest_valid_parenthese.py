@@ -24,6 +24,8 @@ def findMaxLen(string):
             # current valid substring is more than max
             # so far
             if len(stk) != 0:
+                print(i,len(stk), stk[len(stk)-1])
+                print(stk)
                 result = max(result, i - stk[len(stk) - 1])
 
             # If stack is empty. push current index as
@@ -34,5 +36,5 @@ def findMaxLen(string):
     return result
 
 
-s = '(()()'
+s = '()))))(()()'
 print(findMaxLen(s))

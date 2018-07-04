@@ -1,4 +1,4 @@
-# https://practice.geeksforgeeks.org/problems/connect-nodes-at-same-level/1
+ # https://practice.geeksforgeeks.org/problems/connect-nodes-at-same-level/1
 class node:
     def __init__(self, val):
         self.val = val

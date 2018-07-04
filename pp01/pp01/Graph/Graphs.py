@@ -120,7 +120,14 @@ class Graph(object):
             double, i.e. every occurence of vertex in the list
             of adjacent vertices. """
         adj_vertices = self.__graph_dict[vertex]
+        # print(type(adj_vertices))
         degree = len(adj_vertices) + adj_vertices.count(vertex)
+        return degree
+
+    def vertex_degree_all(self):
+        degree = []
+        for vertex in graph.__graph_dict.keys():
+            degree.append((vertex, self.vertex_degree(vertex)))
         return degree
 
     def find_isolated_vertices(self):
@@ -150,35 +157,38 @@ if __name__ == "__main__":
     print("Edges of graph:")
     print(graph.edges())
 
-    print("Add vertex:")
-    graph.add_vertex("z")
+    # print("Add vertex:")
+    # graph.add_vertex("z")
+    #
+    # print("Vertices of graph:")
+    # print(graph.vertices())
+    #
+    # print("Add an edge:")
+    # graph.add_edge({"a", "z"})
+    #
+    # print("Vertices of graph:")
+    # print(graph.vertices())
+    #
+    # print("Edges of graph:")
+    # print(graph.edges())
+    #
+    # print('Adding an edge {"x","y"} with new vertices:')
+    # graph.add_edge({"x", "y"})
+    # print("Vertices of graph:")
+    # print(graph.vertices())
+    # print("Edges of graph:")
+    # print(graph.edges())
+    # print('The path from vertex "a" to vertex "b":')
+    # path = graph.find_path("a", "b")
+    # print(path)
+    #
+    # print('The path from vertex "a" to vertex "f":')
+    # path = graph.find_path("a", "f")
+    # print(path)
+    #
+    # print('The path from vertex "c" to vertex "c":')
+    # path = graph.find_path("c", "c")
+    # print(path)
 
-    print("Vertices of graph:")
-    print(graph.vertices())
+    print(graph.vertex_degree_all())
 
-    print("Add an edge:")
-    graph.add_edge({"a", "z"})
-
-    print("Vertices of graph:")
-    print(graph.vertices())
-
-    print("Edges of graph:")
-    print(graph.edges())
-
-    print('Adding an edge {"x","y"} with new vertices:')
-    graph.add_edge({"x", "y"})
-    print("Vertices of graph:")
-    print(graph.vertices())
-    print("Edges of graph:")
-    print(graph.edges())
-    print('The path from vertex "a" to vertex "b":')
-    path = graph.find_path("a", "b")
-    print(path)
-
-    print('The path from vertex "a" to vertex "f":')
-    path = graph.find_path("a", "f")
-    print(path)
-
-    print('The path from vertex "c" to vertex "c":')
-    path = graph.find_path("c", "c")
-    print(path)
