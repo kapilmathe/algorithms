@@ -2,6 +2,9 @@ def print_matrix(S):
     for x in S:
         print(x)
 
+def subarray_sum_recursive(A, SAS, n):
+
+
 def subarray_sum(A, SAS):
     n = len(A)
     S = []
