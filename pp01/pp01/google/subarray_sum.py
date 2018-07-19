@@ -3,7 +3,7 @@ def print_matrix(S):
         print(x)
 
 def subarray_sum_recursive(A, SAS, n):
-
+    pass
 
 def subarray_sum(A, SAS):
     n = len(A)
