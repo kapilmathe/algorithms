@@ -1,0 +1,1 @@
+# https://www.geeksforgeeks.org/sequences-given-length-every-element-equal-twice-previous/

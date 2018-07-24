@@ -1,11 +1,11 @@
 # input
-# l = [
-# set(["Kobe Bryant", "Jordan Clarkson"]),
-# set(["Julius Randle", "Jordan Clarkson"]),
-# set(["Stephen Curry", "Shaun Livingston"]),
-# set(["Andrew Bogut", "Jason Thompson"]) ,
-# set(["Jason Thompson","Shaun Livingston"]),
-# ]
+l = [
+set(["Kobe Bryant", "Jordan Clarkson"]),
+set(["Julius Randle", "Jordan Clarkson"]),
+set(["Stephen Curry", "Shaun Livingston"]),
+set(["Andrew Bogut", "Jason Thompson"]) ,
+set(["Jason Thompson","Shaun Livingston"]),
+]
 
 #output
 # set(["Stephen Curry", "Shaun Livingston", "Andrew Bogut", "Jason Thompson"])
