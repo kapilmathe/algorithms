@@ -23,6 +23,7 @@ def lps(strr):
             else:
                 L[i][j] = max(L[i][j - 1], L[i + 1][j]);
 
+
     for row in L:
         print(" ".join([str(x) for x in row]))
     return L[0][n - 1]
