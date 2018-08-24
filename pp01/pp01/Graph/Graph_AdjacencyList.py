@@ -1,6 +1,7 @@
 from collections import deque
 import sys
 
+
 class Vertex:
     """
     An example implementation of a Vertex or Node of a graph.
@@ -34,6 +35,7 @@ class Vertex:
             if neighbor[0] == vertex:
                 return True
         return False
+
 
 class Graph:
     """
@@ -182,10 +184,9 @@ class Graph:
 
         return min_vertex
 
-
     def dijkstra(self, source, dest):
         startVertex = self.get_vertex(source)
-        distance = {}
+        distance = dict()
         distance[source] = (0,source)
         visited = {}
         fringe = [startVertex]
@@ -226,9 +227,6 @@ class Graph:
             shortest_path.append(sp.pop())
 
         return shortest_path, distance[dest][0]
-
-
-
 
 
 if __name__ == "__main__":
