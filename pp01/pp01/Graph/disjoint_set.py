@@ -35,6 +35,9 @@ class Vertex:
                 return True
         return False
 
+    def __str__(self):
+        return str(self.__dict__['_key'])
+
 class Graph:
     """
     An example implementation of Directed Graph ADT.
@@ -78,6 +81,9 @@ class Graph:
         vertices = list(self._vertices.keys())
         vertices.sort()
         return vertices
+
+    def get_vertices_obj(self):
+        return self._vertices.values()
 
     def get_edges(self):
         """
@@ -141,6 +147,36 @@ class Graph:
                     # print(q)
 
         return traversed
+
+    def dfs_all(self):
+        vertices = self.get_vertices()
+        visited = set()
+        t = {'time': 0}
+        for vertex_key in vertices:
+            if vertex_key in visited:
+                continue
+            else:
+                visited.add(vertex_key)
+                vertex = self.get_vertex(vertex_key)
+                self.dfs_visit(vertex, t, visited)
+
+    @staticmethod
+    def dfs_visit(u, t, visited):
+        t['time'] += 1
+        u.d = t['time']
+        for vn in u.get_connections():
+            vn_vertex = vn[0]
+            vn_key = vn_vertex.get_key()
+            if vn_key in visited:
+                continue
+            else:
+                visited.add(vn_key)
+                Graph.dfs_visit(vn_vertex, t, visited)
+        t['time'] += 1
+        u.f = t['time']
+
+    def transpose(self):
+        pass
 
     def dfs(self, start_vertex):
         startVertex = self.get_vertex(start_vertex)
@@ -208,10 +244,11 @@ class Graph:
                 if neighbor_vertex not in fringe and visited.get(neighbor_vertex_key) is None:
                     print( "----3.1-----", "neighbor do not exist in fringe and not visited = {0}".format(neighbor_vertex_key))
                     fringe.append(neighbor_vertex)
-                print( "----4-----", "current_vertex={0} neighbor = {1} with possible weight={2}".format(current_vertex_key, neighbor_vertex_key, distance[current_vertex_key][0] +neighbor_weight))
+                print("        4-----", "current_vertex={0} neighbor = {1} with possible weight={2}".format(current_vertex_key, neighbor_vertex_key, distance[current_vertex_key][0] +neighbor_weight))
                 if (distance.get(neighbor_vertex_key) is None) or (distance[neighbor_vertex_key][0] > distance[current_vertex_key][0] +neighbor_weight):
-                    print( "----4.1-----","neighbor {0}- weight changed to= {1}".format(neighbor_vertex_key, distance[current_vertex_key][0] +neighbor_weight))
-                    distance[neighbor_vertex_key] = (distance[current_vertex_key][0] +neighbor_weight, current_vertex_key)
+                    if distance.get(neighbor_vertex_key):
+                        print("         4.1-----","neighbor {0}- weight changed from {2} to {1}".format(neighbor_vertex_key, distance[current_vertex_key][0]+neighbor_weight, distance[neighbor_vertex_key][0]))
+                    distance[neighbor_vertex_key] = (distance[current_vertex_key][0]+neighbor_weight, current_vertex_key)
             print("#########################")
         sp = []
         x = dest
@@ -227,7 +264,6 @@ class Graph:
 
         return shortest_path, distance[dest][0]
 
-
     def disjoint_set(self):
         vertices = self.get_vertices()
         print(vertices)
@@ -240,7 +276,7 @@ class Graph:
                 continue
             else:
                 connected_set = set()
-                st = []
+                st = list()
                 st.append(start)
                 while len(st):
                     s = st.pop()
@@ -263,7 +299,6 @@ class Graph:
         return disjoint_sets
 
 
-
 if __name__ == "__main__":
 
     """
@@ -280,7 +315,7 @@ if __name__ == "__main__":
 
     for v in range(5):
         g.add_vertex(v)
-
+    g.add_edge(0, 4, 15)
     g.add_edge(0, 1, 5)
     g.add_edge(1, 0, 5)
     g.add_edge(0, 2, 3)
@@ -307,5 +342,10 @@ if __name__ == "__main__":
     # print(g.bfs(0))
     # print(g.dfs(0))
     print("############################")
-    # print(g.dijkstra(0,3))
-    print(g.disjoint_set())
+    print(g.dijkstra(0,4))
+    # print(g.disjoint_set())
+    # g.dfs_all()
+    print("############################")
+    # vertices = g.get_vertices_obj()
+    # for key in vertices:
+    #     print("-->", key.get_key(), "--", key.d, " // ", key.f)
