@@ -16,12 +16,13 @@
 #     return 0;
 # }
 
-def get_combination(combination, number_set, length, position):
+def get_combination(combination, number_set, length):
     if len(combination) == length:
         print(combination)
         return True
-    for x in number_set:
-        number_set = number_set - set((x,))
+    num = number_set.copy()
+    for x in num:
+        number_set = number_set - {x, }
         combination2 = combination + (x,)
         get_combination(combination2, number_set, length)
 
